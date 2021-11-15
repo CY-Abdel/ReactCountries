@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
+// IMPORTER LE CSS (CODER AVC SASS)
+import "./styles/index.scss";
+
 
 ReactDOM.render(
   // eviter les bugs et erreurs avex el strict mode
