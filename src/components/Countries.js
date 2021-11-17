@@ -30,8 +30,15 @@ const Countries = () => {
   // mettre axios dans useEffect pour eviter les 10000 requet Network qui ralentisse le process
   useEffect(() => {
     axios
+
+      // version V3.1
+      // .get(
+      //   'https://restcountries.com/v3.1/all?fields=name,population,region,capital,flags'
+      // )
+
+      // version V2
       .get(
-        'https://restcountries.com/v3.1/all?fields=name,population,region,capital,flag'
+        'https://restcountries.com/v2/all?fields=name,population,region,flag,capital'
       )
       // .then((res) => console.log(res.data))
       // .then((res) => console.log(res))
@@ -50,8 +57,14 @@ const Countries = () => {
     <div className="countries">
       <ul className="countries-list">
         {data.map((country) => (
+          // AU LIEU DE CREER 254 CARD POUR CHAQUE PAYS ON VA CREER UNE SEULE
+          // ON VA PASSER A CAR LES  " PROPS "
 
-          <Card />
+          // Version V3.1
+          // <Card country={country} key={country.name.common} /> // sinon lors de l'execution une erreur : "'country' is not defined  no-undef" 
+          
+          // version V2
+          <Card country={country} key={country.name} /> // sinon lors de l'execution une erreur : "'country' is not defined  no-undef" 
         ))}
       </ul>
     </div>
