@@ -1,6 +1,7 @@
 // pas besoin de faire import 
 // import React from 'react';
 
+import Countries from "../components/Countries";
 import Logo from "../components/logo";
 import Navigation from "../components/Navigation";
 
@@ -11,7 +12,8 @@ const Home = () => {
     <div className="Home">
       <Navigation />
       <Logo />
-      <h1>Accueil</h1>
+      <Countries />
+      {/* <h1>Accueil</h1> */}
     </div>
   )
 }
