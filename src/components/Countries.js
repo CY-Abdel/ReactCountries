@@ -38,6 +38,9 @@ const Countries = () => {
   // rangeValue =  25 au depart.
   const [rangeValue, setRangeValue] = useState([25]);
 
+  const [selectRadio, setSelectRadio] = useState('');
+  const radios = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+
   // mettre axios dans useEffect pour eviter les 10000 requet Network qui ralentisse le process
   useEffect(() => {
     if (playOnce) {
@@ -103,13 +106,44 @@ const Countries = () => {
         {/* // RECUPERER LES VALEURS QUAND IL ON CHANGE LE RANGE COMME ADDeVENTSLISTENER ICI ON UTILISE onChange */}
         {/* e.target.value == la valeur de l'input range */}
         {/* quand on change la valeur de rangeValue useEffect va etre ralacer */}
-        <input type="range" min="2" max={data.length} value={rangeValue} onChange= {(e) => setRangeValue(e.target.value)} />
+        <input
+          type="range"
+          min="2"
+          max={data.length}
+          value={rangeValue}
+          onChange={(e) => setRangeValue(e.target.value)}
+        />
+
+        {/* radio choix par continents */}
+        <ul>
+          {radios.map((radio) => {
+            return (
+              <li key={radio}>
+                <input
+                  type="radio" id={radio}
+                  value={radio}
+                  checked={radio === selectRadio} onChange={(e) => setSelectRadio(e.target.value)} />
+                <label htmlFor={radio}>{radio}</label>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      {/*  BUTTON POUR ANNULER LA RADIO DE CONTINENT */}
+      <div className="cancel">
+          {/* LE H5 DOIT ETRE AFFICHER UNIQUEMENT QUAND ON CLIQUE SUR UN RADIO */}
+          {selectRadio && (
+            <h5 onClick={() => setSelectRadio("")}>Anuller la recherche</h5>
+          )}
       </div>
 
       <ul className="countries-list">
+        {sortedData
+          // filtrer par continent avant de map
+          .filter((country) => country.region.includes(selectRadio))
 
-        {/* Dans la console component il y a deux states Hooks on doit appliquer le 2eme qui est sorted pas nombrer de population */}
-        {sortedData.map((country) => (
+          // Dans la console component il y a deux states Hooks on doit appliquer le 2eme qui est sorted pas nombrer de population 
+          .map((country) => (
 
           // {data.map((country) => (
           // AU LIEU DE CREER 254 CARD POUR CHAQUE PAYS ON VA CREER UNE SEULE
