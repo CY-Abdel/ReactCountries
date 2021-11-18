@@ -37,7 +37,7 @@ const App = () => {
         {/* ON AJOUTE UN SWITCH (Rooutes) DANS LE CAS IL Y AURA UNE ERREUR ON AFFICHE ERREUR 404 NOT FOUND */}
         <Routes>
           {/* REMPLACER COMPONENT PAR ELEMENT */}
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
           <Route path="/a-propos" element={<About />} />
           {/* Remplacer la route notFound avec la nouvelle version de react-router-dom*/}
           {/* <Route component={NotFound} /> */}
