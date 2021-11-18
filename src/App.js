@@ -23,7 +23,7 @@ import React from 'react';
 // import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 // REMPALCER PAR
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import About from './pages/About';
 import Home from './pages/Home';
@@ -33,18 +33,18 @@ const App = () => {
   return (
     <div>
       {/* GERER LA NAVIGATION AVEC LE BLOCK LE PLUS HAUT DE L'APPLICATION  Router */}
-      <Router>
+      <BrowserRouter>
         {/* ON AJOUTE UN SWITCH (Rooutes) DANS LE CAS IL Y AURA UNE ERREUR ON AFFICHE ERREUR 404 NOT FOUND */}
         <Routes>
           {/* REMPLACER COMPONENT PAR ELEMENT */}
           {/* <Route path="/" component={Home} /> */}
-          <Route exact path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/a-propos" element={<About />} />
           {/* Remplacer la route notFound avec la nouvelle version de react-router-dom*/}
           {/* <Route component={NotFound} /> */}
-          <Route path="*" element={<NotFound />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div >
   );
 };
