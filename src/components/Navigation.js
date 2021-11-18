@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const Navigation = () => {
   return (
     <div className="navigation">
-      <NavLink to="/home" activeclassname="nav-active">
+      <NavLink to="/" activeclassname="nav-active">
         Acceuil
       </NavLink>
       <NavLink to="/a-propos" activeclassname="nav-active">
